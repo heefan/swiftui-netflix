@@ -9,7 +9,7 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     // String == Category
-    @Published var movies: [String: [Movie]] = [:]
+    @Published var movies = [String: [Movie]]()
     
     public var allCategories: [String] {
          movies.keys.map({String($0)})
