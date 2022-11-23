@@ -43,7 +43,6 @@ struct TopMoviePreview: View {
                         }
                     }
                 }
-                
                 HStack {
                     Spacer()
                     SmallVerticalButton(text: "My List",
@@ -68,6 +67,8 @@ struct TopMoviePreview: View {
                     Spacer()
                 }
             }
+            .background(LinearGradient.blackOpacityGradient)
+            .padding(.top, 250)
         }
         .foregroundColor(.white)
     }
