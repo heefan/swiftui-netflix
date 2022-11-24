@@ -76,6 +76,10 @@ struct TopMoviePreview: View {
 
 struct TopMoviePreview_Previews: PreviewProvider {
     static var previews: some View {
-        TopMoviePreview(movie: exampleMovie6)
+        ZStack {
+            Color.black
+            TopMoviePreview(movie: exampleMovie6)
+        
+        }
     }
 }
