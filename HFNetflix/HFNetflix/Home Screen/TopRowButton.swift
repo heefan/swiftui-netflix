@@ -23,9 +23,11 @@ struct TopRowButton: View {
             
             Spacer()
             
-            Button(action: { }, label: {
+            Button{
+                
+            } label: {
                 Text("TV Shows")
-            })
+            }
             .foregroundColor(.white)
             .buttonStyle(PlainButtonStyle())
             
