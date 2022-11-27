@@ -80,8 +80,10 @@ struct MovieDetailView: View {
                         .padding(.leading, 20)
                         
                     
-                        CustomTabSwitcher(tabs: [.episode, .trailers, .more], movie: movie)
-                        
+                        CustomTabSwitcher(tabs: [.episode, .trailers, .more],
+                                          movie: movie,
+                                          showSeasonPicker: $showSeasonPicker,
+                                          selectedSeason: $selectedSeason)
                     }
                     .padding(.horizontal, 10)
                 }
@@ -89,13 +91,53 @@ struct MovieDetailView: View {
                 Spacer()
             }
             .foregroundColor(.white)
+            
+            Group {
+                if showSeasonPicker {
+                    Color.black.opacity(0.9)
+                    
+                    
+                    VStack(spacing: 40) {
+                        Spacer()
+                        
+                        // https://imtx.me/blog/xcode-13-3-swiftui-foreach-non-constant-range-warning/
+                        let numberOfSeason: Int = movie.numberOfSeasons ?? 0
+                        ForEach(0..<numberOfSeason, id: \.self) { season in
+                            Button {
+                                self.selectedSeason = season + 1
+                                self.showSeasonPicker = false
+                            } label: {
+                                Text("Season \(season + 1)")
+                                    .foregroundColor(selectedSeason == season + 1 ? .white : .gray)
+                                    .bold()
+                                    .font(selectedSeason == season + 1 ? .title : .title2)
+                            }
+                            
+                        }
+                        
+                        Spacer()
+                        
+                        Button {
+                            self.showSeasonPicker = false
+                        } label: {
+                            Image(systemName: "x.circle.fill")
+                                .foregroundColor(.white)
+                                .font(.system(size: 40))
+                                .scaleEffect(x: 1.1)
+                        }
+                        .padding(.bottom, 30)
+                        
+                    }
+                    
+                }
+            }
         }
     }
 }
 
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView(movie: exampleMovie6)
+        MovieDetailView(movie: exampleMovie1)
     }
 }
 

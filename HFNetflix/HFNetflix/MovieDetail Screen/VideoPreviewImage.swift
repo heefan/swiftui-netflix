@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct VideoPreview: View {
+struct VideoPreviewImage: View {
     var imageURL: URL
     var videoURL: URL
     
@@ -35,8 +35,8 @@ struct VideoPreview: View {
     }
 }
 
-struct VideoPreview_Previews: PreviewProvider {
+struct VideoPreviewImage_Previews: PreviewProvider {
     static var previews: some View {
-        VideoPreview(imageURL: exampleImageURL1, videoURL: exampleVideoURL)
+        VideoPreviewImage(imageURL: exampleImageURL1, videoURL: exampleVideoURL)
     }
 }
